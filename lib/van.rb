@@ -25,9 +25,9 @@ VAN_CAPACITY = 5
 		n = 0
 		while n < to_take
 			bike_to_take = station.broken_bikes[n]
-			load(station.release(bike_to_take))
-			n += 1
-		end
+	      	load(station.release(bike_to_take))
+		 	n += 1
+		 end
 	end	
 
 	def full?

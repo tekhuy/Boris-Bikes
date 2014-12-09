@@ -14,8 +14,7 @@ class DockingStation
 	end
 
 	def full?
-		return @bike_count == MAX_DOCKING_BIKES
+		@bike_count == MAX_DOCKING_BIKES
 	end
 		
-
 end

@@ -9,6 +9,6 @@ describe Bike do
 	it "should be able to break" do
 		bike = Bike.new
 		bike.break!
-		expect(bike).to_be be_broken
+		expect(bike).to be_broken
 	end
 end

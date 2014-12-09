@@ -2,7 +2,7 @@ MAX_DOCKING_BIKES = 20
 
 
 class DockingStation
-	def initalize
+	def initialize
 		@bike_count = 0  			  #how many bikes are docked 
 		@dockings = MAX_DOCKING_BIKES #available dockings
 	end	

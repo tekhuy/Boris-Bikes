@@ -1,5 +1,5 @@
 class Bike
-	def initialize(bike_id)
+	def initialize(bike_id = 0)
 		@broken = false
 		@rented = 0
 		@bike_id = bike_id
@@ -11,6 +11,10 @@ class Bike
 
 	def break!
 		@broken = true
+	end
+
+	def fix!
+		@broken = false
 	end
 
 	def rent(user)

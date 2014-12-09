@@ -34,5 +34,8 @@ VAN_CAPACITY = 5
 		free_space == 0
 	end
 
-	
+	def unload()
+		@bikes.pop(bikes_in_van)
+	end
+
 end

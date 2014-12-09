@@ -7,6 +7,8 @@ describe Van do
   let(:station) {DockingStation.new}
   let(:bike) {Bike.new}
 
+
+
   it "should have no bikes initially" do
   	expect(van.bikes_in_van).to eq (0)
   end
@@ -47,6 +49,13 @@ describe Van do
   	bikes.each {|bike| station.dock(bike)}
   	van_small.collect(station)
   	expect(van_small).to be_full
+  end
+
+  it 'should unload the van ' do
+  	bikes = []
+  	5.times { van.load(Bike.new)} # loads bikes directly to the van
+  	van.unload()
+  	expect(van.bikes_in_van).to eq(0)
   end
 
 end  

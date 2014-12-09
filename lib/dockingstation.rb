@@ -1,20 +1,25 @@
-MAX_DOCKING_BIKES = 20
-
-
 class DockingStation
-	def initialize
-		@bike_count = 0  			  #how many bikes are docked 
-		@dockings = MAX_DOCKING_BIKES #available dockings
+
+	DEFAULT_CAPACITY = 10
+
+	def initialize(options = {})
+		@bikes = []  			  
+		@capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
 	end	
 	def bike_count
-		@bike_count 
+		@bikes.count 
 	end
 	def dock(bike)
-		@bike_count += 1
+		raise "Station is full" if full?
+		@bikes << bike
 	end
 
 	def full?
-		@bike_count == MAX_DOCKING_BIKES
+		bike_count == @capacity
+	end
+
+	def release(bike)
+		@bikes.delete(bike)
 	end
 		
 end

@@ -25,4 +25,28 @@ describe Van do
 	expect(van.bikes_in_van).to eq(1)
 	expect(station.broken_bikes.count).to eq(0)
   end
+
+  it "should not take more its capacity" do
+  	van_small = Van.new(:capacity => 1)
+  	bkn_bike1,bkn_bike2 = Bike.new,Bike.new
+  	bkn_bike1.break!
+  	bkn_bike2.break!
+  	
+  	station.dock(bkn_bike1)
+  	station.dock(bkn_bike2)
+
+  	van.collect(station)
+  	expect(station.broken_bikes.count).to eq(1) 
+  end
+
+  it "should be full when its capacity is reached" do
+  	van_small = Van.new(:capacity => 3)
+  	bikes=[]
+  	5.times {bikes << Bike.new}
+  	bikes.each {|bike| bike.break!}
+  	bikes.each {|bike| station.dock(bike)}
+  	van_small.collect(station)
+  	expect(van_small).to be_full
+  end
+
 end  

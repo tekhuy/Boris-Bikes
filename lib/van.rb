@@ -29,4 +29,10 @@ VAN_CAPACITY = 5
 			n += 1
 		end
 	end	
+
+	def full?
+		free_space == 0
+	end
+
+	
 end

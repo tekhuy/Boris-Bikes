@@ -6,6 +6,12 @@ describe Garage do
 	let(:van) {Van.new}
 
 	it "should take bikes from van" do
+		bike1, bike2 = Bike.new, Bike.new
+		bike1.break!
+		bike2.break!
+		garage.load(bike1)
+		garage.load(bike2)
+		expect(garage.bkn_bikes).to eq (2)
 	end 
 
 	it "should repair bikes" do
@@ -14,6 +20,14 @@ describe Garage do
 	end
 
 	it "should release bikes" do
+		bike1, bike2 = Bike.new, Bike.new
+		bike1.break!
+		bike2.break!
+		garage.load(bike1)
+		garage.load(bike2)
+		garage.repair
+		garage.release(2)
+		expect(garage.rep_bikes).to eq (1)
 	end
 
 end

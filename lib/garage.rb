@@ -20,7 +20,7 @@ class Garage
 		@rep_bikes.count
 	end
 
-	def load(bikes)
+	def load(*bikes)
 		bikes.each {|bike| @bkn_bikes << bike}
 	end
 

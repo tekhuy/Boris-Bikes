@@ -5,6 +5,7 @@ describe DockingStation do
  
  let(:bike) {Bike.new}
  let(:station) {DockingStation.new(:capacity => 20)} 
+ #let(:broken_bike) {(Bike.new).break!}
 
  def fill_station(station)
  	20.times {station.dock(Bike.new)}
@@ -48,5 +49,12 @@ it 'should provide the list of broken bikes ' do
 	station.dock(broken_bike)
 	expect(station.broken_bikes).to eq ([broken_bike])
 end
+
+it 'should provide a number of broken bikes' do
+	broken_bike = Bike.new
+	broken_bike.break!
+	station.dock(broken_bike)
+	expect(station.count_broken).to eq(1)
+end	
 
 end

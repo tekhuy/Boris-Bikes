@@ -37,8 +37,8 @@ describe Van do
   	station.dock(bkn_bike1)
   	station.dock(bkn_bike2)
 
-  	van.collect(station)
-  	expect(station.broken_bikes.count).to eq(1) 
+  	van_small.collect(station)
+  	expect(van_small.bikes_in_van).to eq(1) 
   end
 
   it "should be full when its capacity is reached" do
@@ -48,7 +48,10 @@ describe Van do
   	bikes.each {|bike| bike.break!}
   	bikes.each {|bike| station.dock(bike)}
   	van_small.collect(station)
-  	expect(van_small).to be_full
+  	#expect(van_small).to be_full
+  	expect(van_small.bikes_in_van).to eq(3)
+  	#expect(station.count_broken).to eq(5)
+  	#expect(van_small.free_space).to eq(3)
   end
 
   it 'should unload the van ' do

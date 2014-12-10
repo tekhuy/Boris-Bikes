@@ -30,5 +30,19 @@ class DockingStation
 		@bikes.select {|bike| bike.broken?}
 	end
 
+	def count_broken
+		@bikes.select{|bike| bike.broken?}.count
+	end
+
+	def release_N_bkn_to_van(number_of_bikes)
+		deleted = []
+		count = 0
+		@bikes.select{|bike| bike.broken?}.each do |del|
+			deleted << release(del)
+			count += 1
+			break if count == number_of_bikes
+		end	
+		return deleted
+	end
 
 end

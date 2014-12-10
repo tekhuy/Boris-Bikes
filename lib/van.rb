@@ -3,7 +3,7 @@ class Van
 VAN_CAPACITY = 5
 
 	def initialize(options = {})
-		@capacity = options.fetch(:capcaity, VAN_CAPACITY)
+		@capacity = options.fetch(:capacity, VAN_CAPACITY)
 		@bikes = []
 	end
 
@@ -20,14 +20,10 @@ VAN_CAPACITY = 5
 	end
     
 	def collect(station)
-		bikes_to_be_collected = station.broken_bikes.count
-		to_take = [free_space,bikes_to_be_collected].min
-		n = 0
-		while n < to_take
-			bike_to_take = station.broken_bikes[n]
-	      	load(station.release(bike_to_take))
-		 	n += 1
-		 end
+		how_many_bkn = station.count_broken
+		to_take = [free_space,how_many_bkn].min
+		
+		@bikes << station.release_N_bkn_to_van(to_take)
 	end	
 
 	def full?

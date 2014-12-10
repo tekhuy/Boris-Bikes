@@ -8,6 +8,11 @@ class Garage
 	def repair
 		@bkn_bikes.each do |bike|
 			bike.fix!
+		end
+	end
+
+	def fixed
+		@bkn_bikes.each do |bike|
 			@rep_bikes << @bkn_bikes.delete(bike)
 		end
 	end

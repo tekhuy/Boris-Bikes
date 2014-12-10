@@ -1,4 +1,5 @@
 require './lib/dockingstation'
+require './lib/bike_container'
 
 
 describe DockingStation do

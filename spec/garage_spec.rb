@@ -26,7 +26,6 @@ describe Garage do
 		garage.load(bike1)
 		garage.load(bike2)
 		garage.repair
-		garage.fixed
 		garage.release(1)
 		expect(garage.rep_bikes).to eq (1)
 	end

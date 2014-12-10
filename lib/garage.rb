@@ -9,12 +9,8 @@ class Garage
 		@bkn_bikes.each do |bike|
 			bike.fix!
 		end
-	end
-
-	def fixed
-		@bkn_bikes.each do |bike|
-			@rep_bikes << @bkn_bikes.delete(bike)
-		end
+		bikes_to_move = bkn_bikes
+		@rep_bikes << @bkn_bikes.pop(bikes_to_move)
 	end
 
 	def bkn_bikes
@@ -33,4 +29,7 @@ class Garage
 		@rep_bikes.pop(n)
 	end
 
+	def release(bike)
+
+	end
 end

@@ -23,7 +23,8 @@ VAN_CAPACITY = 5
 		how_many_bkn = station.count_broken
 		to_take = [free_space,how_many_bkn].min
 		
-		@bikes << station.release_N_bkn_to_van(to_take)
+	    station.release_N_bkn_to_van(to_take).each {|bk| @bikes << bk}
+	    
 	end	
 
 	def full?
@@ -32,6 +33,10 @@ VAN_CAPACITY = 5
 
 	def unload()
 		@bikes.pop(bikes_in_van)
+	end
+
+	def unload_nbikes(n)
+		@bikes.pop(n)
 	end
 
 end

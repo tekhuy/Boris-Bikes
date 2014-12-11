@@ -42,7 +42,7 @@ describe Van do
   	expect(van_small.bikes_in_van).to eq(1) 
   end
 
-  it "should be full when its capacity is reached" do
+  it "should be full when its capacity is reached fully" do
   	van_small = Van.new(:capacity => 3)
   	bikes=[]
   	5.times {bikes << Bike.new}

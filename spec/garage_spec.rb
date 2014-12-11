@@ -26,8 +26,14 @@ describe Garage do
 		garage.load(bike1)
 		garage.load(bike2)
 		garage.repair
-		garage.release(1)
-		expect(garage.rep_bikes).to eq (1)
+		garage.release(2)
+		expect(garage.rep_bikes).to eq (0)
 	end
+
+	# it "should repair bikes instantly" do
+	# 	bike.break!
+	# 	garage.load(bike)
+	# 	expect(garage.bkn_bikes).to eq(0)
+	# end
 
 end

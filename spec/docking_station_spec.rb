@@ -15,6 +15,11 @@ describe BikeContainer do
 
 	it  "should raise an error if no bike" do
 		expect(lambda {holder.release(bike)}).to raise_error(RuntimeError, 'no bike available')
+		#expect(holder.release(bike)).to raise_error(RuntimeError, 'no bike available')
+	end
+
+	it "should return empty if empty" do
+		expect(holder).to be_empty
 	end
 
 end 

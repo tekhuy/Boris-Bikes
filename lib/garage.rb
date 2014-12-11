@@ -1,35 +1,32 @@
+require 'byebug'
+
 class Garage
 
 	def initialize
-		@bkn_bikes = []
-		@rep_bikes = []
+		@bikes = []
 	end
 
 	def repair
-		@bkn_bikes.each do |bike|
-			bike.fix!
+		@bikes.each do |bike|
+			bike.fix! if bike.broken?
 		end
-		bikes_to_move = bkn_bikes
-		@rep_bikes << @bkn_bikes.pop(bikes_to_move)
 	end
 
 	def bkn_bikes
-		@bkn_bikes.count
+	   @bikes.select{|bike| bike.broken?}.count
 	end
 
 	def rep_bikes
-		@rep_bikes.count
+		@bikes.reject{|bike| bike.broken?}.count
 	end
 
 	def load(*bikes)
-		bikes.each {|bike| @bkn_bikes << bike}
+		bikes.each {|bike| @bikes << bike}
+		#repair  #immediately repairs of delivered bikes 
 	end
 
 	def release(n)
-		@rep_bikes.pop(n)
+		@bikes.pop(n)
 	end
 
-	def release(bike)
-
-	end
 end

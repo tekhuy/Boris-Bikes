@@ -1,7 +1,9 @@
 class Van
 
-VAN_CAPACITY = 5
+  VAN_CAPACITY = 5
 
+  attr_reader :bikes
+  
 	def initialize(options = {})
 
     
@@ -26,7 +28,7 @@ VAN_CAPACITY = 5
 	def collect(station)
 		how_many_bkn = station.count_broken
 		to_take = [free_space,how_many_bkn].min
-		station.release_N_bkn_to_van(to_take).each {|bk| @bikes << bk}
+		station.release_N_bkn_to_van(to_take).each {|bk| @bikes << bk }
 	end	
 
   def collect_fm_garage(garage)

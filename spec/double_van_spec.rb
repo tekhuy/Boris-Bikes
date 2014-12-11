@@ -19,20 +19,20 @@ describe Van do
 
   it "should collect broken bikes from the station" do
     allow(station).to receive(:count_broken).and_return 1
-    allow(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    allow(station).to receive(:release_N_bkn).and_return [bkn_bike]
     van.collect(station)
     expect(van.bikes).to eq [bkn_bike]
   end  
 
   it "should ask the station how many broken bikes it has when collecting" do
     expect(station).to receive(:count_broken).and_return 1
-    allow(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    allow(station).to receive(:release_N_bkn).and_return [bkn_bike]
     van.collect(station)
   end
 
   it "should ask the station how many broken bikes it has when collecting" do
     allow(station).to receive(:count_broken).and_return 1
-    expect(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    expect(station).to receive(:release_N_bkn).and_return [bkn_bike]
     van.collect(station)
   end
 
@@ -45,7 +45,7 @@ describe Van do
   	# station.dock(bkn_bike)
   	# station.dock(bkn_bike)
     allow(station).to receive(:count_broken).and_return (1)
-    allow(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    allow(station).to receive(:release_N_bkn).and_return [bkn_bike]
   	van_small.collect(station)
   	expect(van_small.bikes_in_van).to eq(1) 
   end
@@ -57,7 +57,7 @@ describe Van do
   	# bikes.each {|bike| bike.break!}
   	# bikes.each {|bike| station.dock(bike)}
     allow(station).to receive(:count_broken).and_return (1)
-    allow(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    allow(station).to receive(:release_N_bkn).and_return [bkn_bike]
   	van_small.collect(station)
   	#expect(van_small).to be_full
   	expect(van_small.bikes_in_van).to eq(1)
@@ -78,7 +78,7 @@ describe Van do
     # garage.load(bike2)
     # van.collect_fm_garage(garage)
     allow(station).to receive(:count_broken).and_return (1)
-    allow(station).to receive(:release_N_bkn_to_van).and_return [bkn_bike]
+    allow(station).to receive(:release_N_bkn).and_return [bkn_bike]
     allow(garage).to receive(:release).and_return [wking_bike]
     van.collect_fm_garage(garage)
     expect(van.bikes_in_van).to eq(1)

@@ -43,12 +43,12 @@ class DockingStation
 
   def release_bikes(options={})
     max = options.fetch(:maximum, capacity)
-    ready_to_release = bikes.select{|b| b.broken?}[0..max]
+    ready_to_release = bikes.select{:broken?}[0..max]
     ready_to_release.each{|b| release b}
     ready_to_release
   end
 
-	def release_N_bkn_to_van(number_of_bikes)
+	def release_N_bkn(number_of_bikes)
 		deleted = []
 		count = 0
 		bikes.select{|bike| bike.broken?}.each do |del|

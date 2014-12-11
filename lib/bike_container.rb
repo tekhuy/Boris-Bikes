@@ -32,6 +32,11 @@ module BikeContainer
 		bike_count == capacity
 	end
 
+
+	def load(*bike)
+		bikes << bike
+	end
+
 	def empty?
 		bikes.count == 0
 	end

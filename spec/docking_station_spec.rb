@@ -13,4 +13,8 @@ describe BikeContainer do
 		expect(holder.bike_count).to eq(1)
 	end
 
+	it  "should raise an error if no bike" do
+		expect(lambda {holder.release(bike)}).to raise_error(RuntimeError, 'no bike available')
+	end
+
 end 

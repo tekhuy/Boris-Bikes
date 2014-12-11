@@ -24,7 +24,8 @@ module BikeContainer
 	end
 
 	def release(bike)
-		bikes.delete(bike)
+		raise "no bike available" unless  bikes.include?(bike)
+		bikes.delete(bike) if bikes.include?(bike)		
 	end
 
 	def full?
@@ -32,6 +33,6 @@ module BikeContainer
 	end
 
 	def available_bikes
-		bikes.reject {|bike| bike.broken? }
+		bikes.reject {|bike| bike.broken?}
 	end
 end

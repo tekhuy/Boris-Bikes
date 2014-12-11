@@ -3,7 +3,11 @@ class Van
 VAN_CAPACITY = 5
 
 	def initialize(options = {})
-		@capacity = options.fetch(:capacity, VAN_CAPACITY)
+
+    
+		@capacity = options.fetch(:capacity, VAN_CAPACITY) 
+    raise "Not a number" unless @capacity.is_a?(Fixnum)
+    raise "Should be above zero" if @capacity <= 0
 		@bikes = []
 	end
 

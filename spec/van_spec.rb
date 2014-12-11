@@ -70,5 +70,21 @@ describe Van do
     expect(van.bikes_in_van).to eq(2)
 
   end
+  it "should take only 1 bike to 1 bike van" do
+    bike2 = Bike.new
+    van_small = Van.new(:capacity => 1)
+    garage.load(bike)
+    garage.load(bike2)
+    van_small.collect_fm_garage(garage)
+    expect(van_small.bikes_in_van).to eq(1)
+  end
+
+  it 'should raise an error if no number given' do
+    expect(lambda{Van.new(:capacity => 'bananas')}).to raise_error(RuntimeError, 'Not a number')  
+  end
+  
+  it 'should raise an error if number is below zero' do
+    expect(lambda{Van.new(:capacity => -10)}).to raise_error(RuntimeError, 'Should be above zero')  
+  end  
 
 end  

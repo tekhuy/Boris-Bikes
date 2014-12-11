@@ -1,6 +1,10 @@
 class Van
 
-VAN_CAPACITY = 5
+  VAN_CAPACITY = 4
+
+  include BikeContainer
+
+  attr_reader :bikes
 
 	def initialize(options = {})
 
@@ -19,15 +23,19 @@ VAN_CAPACITY = 5
 		@capacity - bikes_in_van
 	end	
 
-	def load(bike)
-		@bikes << bike
-	end
+	# def load(*bike)
+	# 	@bikes << bike
+	# end
     
 	def collect(station)
 		how_many_bkn = station.count_broken
 		to_take = [free_space,how_many_bkn].min
-		station.release_N_bkn_to_van(to_take).each {|bk| @bikes << bk}
+		station.release_N_bkn(to_take).each {|bk| @bikes << bk }
 	end	
+
+	# def collect(station)
+	# 	station.release_broken_bikes(maximum:free_space).each {|bk| @bikes << bk }
+  # end
 
   def collect_fm_garage(garage)
     @bikes = garage.release(free_space)

@@ -24,8 +24,12 @@ VAN_CAPACITY = 5
 		to_take = [free_space,how_many_bkn].min
 		
 	    station.release_N_bkn_to_van(to_take).each {|bk| @bikes << bk}
-	    
 	end	
+
+  def collect_fm_garage(garage)
+    @bikes = garage.release(free_space)
+  end
+
 
 	def full?
 		free_space == 0

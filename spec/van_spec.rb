@@ -6,6 +6,7 @@ describe Van do
   let(:van) {Van.new}	
   let(:station) {DockingStation.new}
   let(:bike) {Bike.new}
+  let(:garage) {Garage.new}
 
 
 
@@ -59,6 +60,15 @@ describe Van do
   	5.times { van.load(Bike.new)} # loads bikes directly to the van
   	van.unload()
   	expect(van.bikes_in_van).to eq(0)
+  end
+
+  it "should take bikes from the garage" do
+    bike2 = Bike.new
+    garage.load(bike)
+    garage.load(bike2)
+    van.collect_fm_garage(garage)
+    expect(van.bikes_in_van).to eq(2)
+
   end
 
 end  
